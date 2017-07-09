@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="wheel_item_text_size">19sp</dimen>
+    <dimen name="wheel_item_selected_text_size">23sp</dimen>
+    <dimen name="wheel_item_space">0dp</dimen>
+    <dimen name="wheel_indicator_size">1.2dp</dimen>
+    <dimen name="wheel_margins">0dp</dimen>
+    <dimen name="wheel_spacing">5dp</dimen>
+    <dimen name="wheel_kask_height">2dp</dimen>
+
+</resources>
