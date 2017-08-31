@@ -32,8 +32,30 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
     private val rectCurrentItem = Rect()
 
     private var unit: String? = null
+        set(value) {
+            field = value
+            if (isInitFinish) {
+                computeTextSize()
+                requestLayout()
+                invalidate()
+            }
+        }
     private var unitTextColor: Int = 0
+        set(value) {
+            field = value
+            if (isInitFinish) {
+                invalidate()
+            }
+        }
     private var unitTextSize: Int = 0
+        set(value) {
+            field = value
+            if (isInitFinish) {
+                computeTextSize()
+                requestLayout()
+                invalidate()
+            }
+        }
     private var unitSpace: Int = 0
     private var unitTextWidth: Int = 0
     private var visibleItemCount: Int = 0
@@ -569,6 +591,8 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         val item = this.adapter.getItem(position)
         onItemSelectedListener?.onItemSelected(this, item, position)
     }
+
+    fun getSelectedItem() = adapter.getItem(selectedItemPosition)
 
     fun getSelectedItemPosition(): Int {
         return selectedItemPosition
