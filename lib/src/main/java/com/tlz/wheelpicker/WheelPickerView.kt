@@ -608,10 +608,12 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         onItemSelectedListener?.onItemSelected(this, item, position)
     }
 
-    fun getSelectedItem() = adapter.getItem(selectedItemPosition)
+    fun getSelectedItem() = adapter.getItem(currentItemPosition)
+
+    fun getSelectedItemString() = getSelectedItem().toString()
 
     fun getSelectedItemPosition(): Int {
-        return selectedItemPosition
+        return currentItemPosition
     }
 
     fun setSelectedItemPosition(position: Int) {
@@ -630,9 +632,14 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         notifyDatasetChanged()
     }
 
-    fun setData(data: List<Any>, defaultSelectedPosition: Int = 0) {
+    fun setData(data: List<Any>, defaultSelectedPosition: Int) {
         this.adapter.setData(data)
         setSelectedItemPosition(defaultSelectedPosition)
+    }
+
+    fun setData(data: List<Any>) {
+        this.adapter.setData(data)
+        notifyDatasetChanged()
     }
 
     fun addData(data: List<Any>) {
