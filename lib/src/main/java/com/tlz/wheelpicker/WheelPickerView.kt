@@ -31,7 +31,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
     private val rectIndicatorFoot = Rect()
     private val rectCurrentItem = Rect()
 
-    private var unit: String? = null
+    var unit: String? = null
         set(value) {
             field = value
             if (isInitFinish) {
@@ -40,14 +40,14 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var unitTextColor: Int = 0
+    var unitTextColor: Int = 0
         set(value) {
             field = value
             if (isInitFinish) {
                 invalidate()
             }
         }
-    private var unitTextSize: Int = 0
+    var unitTextSize: Int = 0
         set(value) {
             field = value
             if (isInitFinish) {
@@ -56,9 +56,17 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var unitSpace: Int = 0
+    var unitSpace: Int = 0
+        set(value) {
+            field = value
+            if (isInitFinish) {
+                computeTextSize()
+                requestLayout()
+                invalidate()
+            }
+        }
     private var unitTextWidth: Int = 0
-    private var visibleItemCount: Int = 0
+    var visibleItemCount: Int = 0
         set(count) {
             field = count
             if (isInitFinish) {
@@ -70,14 +78,14 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
     private var halfDrawnItemCount: Int = 0
     private var textMaxWidth: Int = 0
     private var textMaxHeight: Int = 0
-    private var itemTextColor: Int = 0
+    var itemTextColor: Int = 0
         set(color) {
             field = color
             if (isInitFinish) {
                 invalidate()
             }
         }
-    private var selectedItemTextColor: Int = 0
+    var selectedItemTextColor: Int = 0
         set(color) {
             field = color
             if (isInitFinish) {
@@ -85,7 +93,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var itemTextSize: Int = 0
+    var itemTextSize: Int = 0
         set(size) {
             field = size
             paint.textSize = size.toFloat()
@@ -95,8 +103,15 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var itemSelectedTextSize: Int = 0
-    private var indicatorSize: Int = 0
+    var itemSelectedTextSize: Int = 0
+        set(size) {
+            field = size
+            if (isInitFinish) {
+                requestLayout()
+                invalidate()
+            }
+        }
+    var indicatorSize: Int = 0
         set(size) {
             field = size
             if (isInitFinish) {
@@ -104,7 +119,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var indicatorColor: Int = 0
+    var indicatorColor: Int = 0
         set(color) {
             field = color
             if (isInitFinish) {
@@ -112,7 +127,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
             }
         }
     private val maskHeight: Int
-    private var itemSpace: Int = 0
+    var itemSpace: Int = 0
         set(space) {
             field = space
             if (isInitFinish) {
@@ -120,7 +135,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 invalidate()
             }
         }
-    private var itemAlign: Int = 0
+    var itemAlign: Int = 0
         set(align) {
             field = align
             if (isInitFinish) {
@@ -228,6 +243,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         computeTextSize()
 
         isClickable = true
+        isInitFinish = true
     }
 
     private fun updateVisibleItemCount() {
