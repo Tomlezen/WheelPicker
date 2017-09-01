@@ -12,7 +12,6 @@
       android:id="@+id/wheel_picker"
       android:layout_width="match_parent"
       android:layout_height="500dp"
-      app:scroll_unit="年"
       app:scroll_selected_item_text_color="@color/colorPrimary"
       app:scroll_atmospheric="true"
       app:scroll_visible_item_count="12"

@@ -357,7 +357,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                 }
             }
             else -> {
-                drawnUnitCenterX = (textMaxWidth - unitSpace - unitTextWidth) / 2 + unitTextWidth / 2 + unitSpace
+                drawnUnitCenterX = wheelCenterX + (textMaxWidth - unitTextWidth - unitSpace) / 2 + unitTextWidth / 2 + unitSpace
                 wheelCenterX
             }
         }
@@ -451,7 +451,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
             }
 
             unit?.let {
-                canvas.drawText(unit, drawnCenterX + 100f, drawnCenterY.toFloat(), paintUnit)
+                canvas.drawText(unit, drawnUnitCenterX.toFloat(), drawnCenterY.toFloat(), paintUnit)
             }
 
             if (hasIndicator) {
