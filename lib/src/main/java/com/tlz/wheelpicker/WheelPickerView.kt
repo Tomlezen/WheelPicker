@@ -627,6 +627,8 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         selectedItemPosition = _position
         currentItemPosition = _position
         scrollOffsetY = 0
+        computeTextSize()
+        computeDrawnCenter()
         computeFlingLimitY()
         requestLayout()
         invalidate()
@@ -665,6 +667,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
         }
         scrollOffsetY = 0
         computeTextSize()
+        computeDrawnCenter()
         computeFlingLimitY()
         requestLayout()
         invalidate()
