@@ -268,6 +268,11 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
     private fun computeTextSize() {
         textMaxHeight = 0
         textMaxWidth = textMaxHeight
+        if (itemSelectedTextSize > itemTextSize) {
+            paint.textSize = itemSelectedTextSize.toFloat()
+        } else {
+            paint.textSize = itemTextSize.toFloat()
+        }
 
         (0..adapter.itemCount - 1)
                 .asSequence()
@@ -430,7 +435,6 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
                         canvas.restore()
 
                         paint.color = selectedItemTextColor
-                        paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
                         paint.textSize = itemSelectedTextSize.toFloat()
                         canvas.save()
                         canvas.clipRect(rectCurrentItem)
@@ -461,6 +465,7 @@ class WheelPickerView constructor(val ctx: Context, val attrs: AttributeSet) : V
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
+        handler.removeCallbacks(runnable)
         scroller.forceFinished(true)
         tracker?.recycle()
         onItemSelectedListener = null
