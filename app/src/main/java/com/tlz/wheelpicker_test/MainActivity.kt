@@ -17,17 +17,10 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     val dataList = mutableListOf<String>()
-    (0..50).map { "test$it" }
+    (0 until 50).map { "test$it" }
         .forEach{
           dataList.add(it)
         }
-//    wheel_picker.addItems(dataList, 5)
-//    wheel_picker.setOnItemSelectedListener { _, position, _ ->
-//      Toast.makeText(this@MainActivity, "Selected position $position", Toast.LENGTH_LONG).show()
-//    }
-//    wheel_picker.setAdapter(adapter)
-//    adapter.setData(dataList, 5)
-//    wheel_picker.setSelectedItemPosition(0)
     wheel_picker.unit = "年"
     wheel_picker.setData(dataList, 5)
     wheel_picker.notifyDatasetChanged()
