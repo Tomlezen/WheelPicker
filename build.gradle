@@ -4,16 +4,18 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
 
 allprojects {
     allprojects{
         ext{
-            kotlin_version = '1.1.60'
+            kotlin_version = '1.2.10'
             appcompat_verision = '26.1.0'
 
             kotlin_jre = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
